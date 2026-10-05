@@ -1,0 +1,6 @@
+{
+  "name": "Dhruv Urja - Smart Power for the Poles",
+  "description": "AI-Driven Smart Energy Management System for Polar Research Stations (MoES / NCPOR). Load forecasting, renewable energy integration, and fuel optimization under extreme polar conditions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

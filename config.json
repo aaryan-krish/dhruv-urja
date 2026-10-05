@@ -1,0 +1,116 @@
+{
+  "station": {
+    "name": "Bharati Antarctic Research Station (assumed example)",
+    "name_hi": "भारती अंटार्कटिक अनुसंधान केंद्र (अनुमानित उदाहरण)",
+    "location": "Larsemann Hills, East Antarctica (69°24'S, 76°11'E - assumed example)",
+    "elevation_m": 35,
+    "design_winter_temp_c": -45.0,
+    "design_summer_temp_c": 5.0,
+    "safe_minimum_indoor_temp_c": 16.0,
+    "target_indoor_temp_c": 20.0,
+    "thermal_loss_coefficient_kw_per_c": 0.45,
+    "wind_infiltration_factor": 0.015,
+    "station_base_electrical_load_kw": 24.0,
+    "occupancy_nominal": 22,
+    "occupancy_max": 47
+  },
+  "generators": [
+    {
+      "id": "GEN-1",
+      "name": "Primary Diesel Generator (assumed value: 80 kW)",
+      "rated_power_kw": 80.0,
+      "min_stable_load_pct": 40.0,
+      "fuel_curve_a_l_per_kwh": 0.22,
+      "fuel_curve_b_l_per_hr_at_idle": 3.8,
+      "start_delay_minutes": 3,
+      "min_run_time_minutes": 30,
+      "min_stop_time_minutes": 15,
+      "waste_heat_recovery_efficiency_pct": 55.0,
+      "wet_stacking_threshold_pct": 40.0
+    },
+    {
+      "id": "GEN-2",
+      "name": "Secondary Auxiliary Generator (assumed value: 60 kW)",
+      "rated_power_kw": 60.0,
+      "min_stable_load_pct": 40.0,
+      "fuel_curve_a_l_per_kwh": 0.24,
+      "fuel_curve_b_l_per_hr_at_idle": 3.2,
+      "start_delay_minutes": 3,
+      "min_run_time_minutes": 30,
+      "min_stop_time_minutes": 15,
+      "waste_heat_recovery_efficiency_pct": 50.0,
+      "wet_stacking_threshold_pct": 40.0
+    }
+  ],
+  "battery": {
+    "id": "BESS-1",
+    "chemistry": "LiFePO4 Containerized BESS (assumed value: 200 kWh / 80 kW)",
+    "nominal_capacity_kwh": 200.0,
+    "nominal_power_kw": 80.0,
+    "soc_min_pct": 15.0,
+    "soc_max_pct": 92.0,
+    "soc_reserve_emergency_pct": 25.0,
+    "round_trip_efficiency_pct": 92.0,
+    "charge_cutoff_temp_c": -5.0,
+    "discharge_cutoff_temp_c": -20.0,
+    "thermal_management_heater_kw": 1.8,
+    "cold_derate": [
+      {"temp_c": 15, "power_mult": 1.0, "cap_mult": 1.0},
+      {"temp_c": 5, "power_mult": 0.9, "cap_mult": 0.92},
+      {"temp_c": 0, "power_mult": 0.75, "cap_mult": 0.85},
+      {"temp_c": -10, "power_mult": 0.45, "cap_mult": 0.65},
+      {"temp_c": -20, "power_mult": 0.15, "cap_mult": 0.40}
+    ]
+  },
+  "renewables": {
+    "wind": {
+      "id": "WTG-FARM",
+      "count": 2,
+      "rated_power_per_unit_kw": 30.0,
+      "total_capacity_kw": 60.0,
+      "description": "Wind turbine farm (assumed value: 2x 30 kW = 60 kW total)",
+      "cut_in_speed_mps": 3.5,
+      "rated_speed_mps": 12.0,
+      "cut_out_speed_mps": 25.0,
+      "cold_shutdown_temp_c": -40.0,
+      "icing_temp_range": [-15.0, -1.0],
+      "icing_humidity_threshold_pct": 82.0,
+      "max_icing_loss_pct": 40.0
+    },
+    "solar": {
+      "id": "PV-ARRAY",
+      "total_capacity_kw": 50.0,
+      "description": "Solar PV array (assumed value: 50 kW)",
+      "tilt_angle_deg": 65.0,
+      "temp_coefficient_pct_per_c": -0.36,
+      "nominal_operating_temp_c": 25.0,
+      "snow_coverage_loss_max_pct": 75.0,
+      "polar_night_months": [5, 6, 7],
+      "polar_day_months": [11, 12, 1]
+    }
+  },
+  "emission_factors": {
+    "diesel_kg_co2_per_litre": 2.68,
+    "diesel_cost_inr_per_litre_at_polar_site": 310.0
+  },
+  "optimizer": {
+    "time_step_minutes": 15,
+    "forecast_horizon_hours": 24,
+    "safety_margin_kwh": 18.0,
+    "battery_degraded_soh_threshold_pct": 70.0,
+    "stale_sensor_timeout_seconds": 900,
+    "generator_min_loading_rule_pct": 40.0,
+    "spinning_reserve_margin_pct": 15.0
+  },
+  "metadata": {
+    "system_name": "Dhruv Urja",
+    "system_name_hindi": "ध्रुव ऊर्जा",
+    "tagline_en": "Smart power for the poles",
+    "tagline_hi": "ध्रुवों के लिए स्मार्ट ऊर्जा",
+    "ref_number": "MoES/NCPOR/DU-2026/26061",
+    "issue_date": "2026-10-04",
+    "organization": "Ministry of Earth Sciences (MoES)",
+    "department": "National Centre for Polar and Ocean Research (NCPOR)",
+    "problem_id": "26061"
+  }
+}
